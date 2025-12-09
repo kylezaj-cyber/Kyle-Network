@@ -1,0 +1,217 @@
+/* Global Reset and Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: #111;
+    color: white;
+    overflow: hidden;
+}
+
+/* Preloader Styling */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.preloader img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.preloader h1 {
+    display: flex;
+    gap: 5px;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.preloader h1 span {
+    display: inline-block;
+    animation: arvion 1.4s ease-in-out infinite;
+}
+
+.preloader h1 span:nth-child(1) { animation-delay: 0s; }
+.preloader h1 span:nth-child(2) { animation-delay: 0.25s; }
+.preloader h1 span:nth-child(3) { animation-delay: 0.5s; }
+.preloader h1 span:nth-child(4) { animation-delay: 0.75s; }
+.preloader h1 span:nth-child(5) { animation-delay: 1s; }
+.preloader h1 span:nth-child(6) { animation-delay: 1.25s; }
+
+@keyframes arvion {
+    0%, 100% {
+        transform: translate(0) scale(1);
+        color: white;
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+        color: #007BFF;
+    }
+}
+
+.preloader p {
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Progress Bar Styling */
+.progress-container {
+    width: 220px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #007BFF;
+    border-radius: 10px;
+    transition: width 0.25s linear;
+}
+
+.progress-text {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Form and Content Styling */
+.content {
+    display: none; /* Initially hidden, shown by JS after preloading */
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.form-header img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.form-header h1 {
+    font-size: 1.8rem;
+    color: #007BFF;
+    letter-spacing: 1px;
+}
+
+form {
+    position: relative;
+    background: #111;
+    padding: 40px 35px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.2);
+    color: #eee;
+    overflow: hidden;
+}
+
+form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    background: linear-gradient(45deg, #007BFF, #ffffff, #007BFF, #ff00ff);
+    background-size: 400%;
+    border-radius: 20px;
+    z-index: -1;
+    animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+form label {
+    align-self: flex-start;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+form input:not([type="submit"]) {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    background-color: #222;
+    color: #eee;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+form input:not([type="submit"]):focus {
+    border-color: #00BFFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form input[type="submit"] {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 5px;
+}
+
+form input[type="submit"]:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+        padding: 30px 25px;
+    }
+    
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+}
